@@ -1,0 +1,56 @@
+{
+    "chicks": [
+        {
+            "type": 1,
+            "posX": 900,
+            "posY": 390,
+            "frames": [
+                "chick1-1.png",
+                "chick1-2.png"
+            ]
+        },
+        {
+            "type": 2,
+            "posX": 1250,
+            "posY": 405,
+            "frames": [
+                "chick2-1.png",
+                "chick2-2.png"
+            ]
+        },
+        {
+            "type": 3,
+            "posX": 1600,
+            "posY": 390,
+            "frames": [
+                "chick3-1.png",
+                "chick3-2.png"
+            ]
+        }
+    ],
+    "martens": {
+        "frames": [
+            "marten-1.png",
+            "marten-2.png"
+        ]
+    },
+    "aim": {
+        "frames": [
+            "aim.png",
+            "aim-disabled.png"
+        ]
+    },
+    "gun": {
+        "frames": [
+            "gun.png",
+            "gun-disabled.png"
+        ]
+    },
+    "aimCollisionArea": {
+        "x": 600,
+        "y": 625,
+        "maxX": 1900,
+        "maxY": 2500
+    },
+    "deathLine": 570
+}
