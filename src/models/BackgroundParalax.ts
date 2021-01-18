@@ -1,4 +1,5 @@
 import * as PIXI from 'pixi.js';
+import Control from './Control';
 
 export class BackgroundParalax {
     constructor(app: PIXI.Application, texture: PIXI.Texture, posCenter: number, scale: number, canvasWidthHeight: number) {
@@ -9,7 +10,12 @@ export class BackgroundParalax {
         this.sprite.y = this.posCenter;
         this.sprite.anchor.set(0.5);
         this.sprite.scale.set(scale);
+        this.sprite.zIndex = 50;
         app.stage.addChild(this.sprite);
+
+        Control.addEventListener('mousemove', e => {
+            this.setShift(e.offsetX);
+        });
     };
 
     setShift(posX: number) {

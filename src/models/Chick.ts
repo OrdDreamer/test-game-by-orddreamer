@@ -1,45 +1,32 @@
 import * as PIXI from "pixi.js";
+import { GameObject } from './GameObject';
 import config from "../assets/config.json";
 
 
 const CHIKS_DATA = config.chicks;
 
-export class Chick {
+export class Chick extends GameObject{
 
     constructor(app: PIXI.Application, atlas: PIXI.ITextureDictionary, type: number, scale: number) {
+        super(new PIXI.Sprite(atlas[CHIKS_DATA[type-1].frames[0]]));
+        this.setCoordinates({ x: CHIKS_DATA[type-1].posX * scale, y: CHIKS_DATA[type-1].posY * scale });
         this.atlas = atlas;
         this.type = type - 1;
-        this.sprite = new PIXI.Sprite(atlas[CHIKS_DATA[this.type].frames[0]]);
-        this.setCoordinates(CHIKS_DATA[this.type].posX * scale, CHIKS_DATA[this.type].posY * scale);
         this.sprite.anchor.set(0.5);
         this.sprite.scale.set(scale);
+        this.sprite.zIndex = 400;
         app.stage.addChild(this.sprite);
 
         this.startAnimation();
     }
 
     chance: number = 0.3;
-    sprite: PIXI.Sprite;
     atlas: PIXI.ITextureDictionary;
     type: number;
-    x: number;
-    y: number;
     intervalId: any;
     textureCounter: number;
 
     openBeak: boolean;
-
-    setCoordinates(posX: number, posY: number) {
-        this.x = posX;
-        this.y = posY;
-
-        this.updateCoordinates();
-    }
-
-    updateCoordinates() {
-        this.sprite.x = this.x;
-        this.sprite.y = this.y;
-    }
 
     startAnimation() {
         this.intervalId = setInterval(() => {
